@@ -24,22 +24,22 @@ class Register extends React.Component {
     }
 
     onSubmitRegister = () => {
-        fetch('http://localhost:3000/register', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                email: this.state.email,
-                password: this.state.password,
-                name: this.state.name
-            })
+        fetch("https://git.heroku.com/guarded-refuge-66754.git/register", {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: this.state.email,
+            password: this.state.password,
+            name: this.state.name
+          })
         })
-            .then(res => res.json())
-            .then(user => {
-                if (user.id) {
-                    this.props.loadUser(user);
-                    this.props.onRouteChange('home');
-                }
-            })
+          .then(res => res.json())
+          .then(user => {
+            if (user.id) {
+              this.props.loadUser(user);
+              this.props.onRouteChange("home");
+            }
+          });
         console.log(this.state);
     }
 
